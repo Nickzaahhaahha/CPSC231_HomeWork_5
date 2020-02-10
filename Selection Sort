@@ -18,7 +18,7 @@ sw.Elapsed;   //เรียกดูค่าเวลาที่นับ
 
 	static int[] RandomArray()
         {
-            	int[] arr = new int[100];
+            	int[] arr = new int[99999];
  
             	for (int i = 0; i < arr.Length; i++)
             	{
