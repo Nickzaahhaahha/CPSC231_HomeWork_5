@@ -1,0 +1,56 @@
+using System.Diagnostics;   
+Stopwatch sw = new Stopwatch();  //ทำการเรียกใช้คลาส Stopwatch 
+sw.Start();   //เริ่มนับเวลา
+sw.Stop();    //หยุดนับเวลา
+sw.Elapsed;   //เรียกดูค่าเวลาที่นับ
+
+	static void Main(string[] args)
+        {
+        	 for (int i = 0; i < 20; i++)
+           	 {
+               	 	int[] arr = RandomArray();
+                	Console.Write(" Selection Sort : " + SelectionSort(arr));
+               	 	Console.WriteLine();
+           	 }
+ 
+            	Console.Read();
+        }
+
+	static int[] RandomArray()
+        {
+            	int[] arr = new int[100];
+ 
+            	for (int i = 0; i < arr.Length; i++)
+            	{
+                	Random ran = new Random();
+                	arr[i] = ran.Next(0, 100);
+               		Thread.Sleep(10);
+            	}
+ 
+            	return arr;
+        }
+
+        static TimeSpan SelectionSort(int[] arr)   // เมธอดการเรียงข้อมูลแบบ Selection Sort
+        {
+            int min, temp;
+            Stopwatch SW = new Stopwatch();
+            SW.Start();
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                min = i;
+ 
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[min])
+                    {
+                        min = j;
+                    }
+                }
+ 
+                temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+            SW.Stop();
+            return SW.Elapsed;
+        }
